@@ -10,7 +10,8 @@ export class HelloComponent {
   idade = 40;
   cidade = 'Curitiba'
   adicionado = false;
-  funcionarios[];
+  funcionarios=[];
+  idFuncionario=0;
 
   getIdade() {
     return this.idade;
@@ -19,15 +20,15 @@ export class HelloComponent {
   adicionar() {
 
     const numero = Math.round(Math.random() * 100);
-
+    
     console.log(`Adicionando ${numero}`)
-    this.nome = 'Mietlicki ' + numero;
+    this.nome = 'Cristian ' + numero;
+
+    this.funcionarios.push(this.nome);
   }
 
   adicionar2() {
-
     this.adicionado = true;
-
     console.log(`Adicionando ${this.nome}`);
   }
 
@@ -44,7 +45,19 @@ export class HelloComponent {
   adicionarEndereco(enderecoInput: any) {
     console.log(enderecoInput);
     this.nome = enderecoInput;
-
   }
+
+  adicionarNome(nomeInput: any){
+
+    this.nome = nomeInput;
+    this.funcionarios.push({
+      
+      id: ++this.idFuncionario, 
+      nome: this.nome
+    });
+     
+    this.adicionado = false;
+  }
+
 
 }
